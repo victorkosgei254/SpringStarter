@@ -1,5 +1,7 @@
 package com.kosgei.dev.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +13,7 @@ public class Employees{
 	
 	public String name;
 	
-	
+	@JsonIgnore
 	public String age;
 	
 
@@ -20,11 +22,6 @@ public class Employees{
 	
 	public String email;
 	
-	@Override
-	public String toString() {
-		
-		return "EMPLOYEE : name="+name+" age = "+age+" location = "+location+" email = "+email+" ...OK";
-	}
 	
 	
 	

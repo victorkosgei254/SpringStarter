@@ -1,7 +1,9 @@
 package com.kosgei.dev.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kosgei.dev.model.Employees;
+import com.kosgei.dev.service.EmployeesService;
 
 @RestController
 public class EmployeeController {
+	
+	@Autowired
+	private EmployeesService eService;
 	
 	@Value("${app.name}")
 	private String aboutService;
@@ -28,12 +34,8 @@ public class EmployeeController {
 	
 //	@RequestMapping(value="/employees", method=RequestMethod.GET)
 	@GetMapping("/employees")
-	public HashMap<String,String>  getEmployees() {
-		HashMap<String,String> employees = new HashMap<String, String>();
-		employees.put("name","Kosgei Victor Kipruto");
-		employees.put("Age", "24");
-		employees.put("role","Software Engineer");
-		return employees;
+	public List<Employees>  getEmployees() {
+		return eService.getEmployees();
 		
 	}
 	
